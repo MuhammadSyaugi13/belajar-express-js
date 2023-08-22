@@ -2,36 +2,72 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-    // res.send('hello world')
-    res.sendFile('./index.html', {root: __dirname})
-})
+const mahasiswaRoutes = require('./routes/mahasiswa')
 
-app.get('/about', (req, res) => {
-    res.sendFile('./about.html', {root: __dirname})
-})
+// app.use((req,res,next) => {
+//     res.status(200).json({
+//         message:"Restfull api nodejs express"
+//     })
+// })
 
-app.get('/contact', (req, res) => {
-    res.sendFile('./contact.html', {root: __dirname})
-})
+app.use('/mahasiswa', mahasiswaRoutes)
 
-app.get('/product/:id', (req, res) => {
-    res.send(`Product ID: ${req.params.id} <br> Category: ${req.query.category}`)
-    // res.sendFile('./contact.html', {root: __dirname})
-})
-
-// error handler
-app.use('/', (req, res) => {
-    res.status(404)
-    res.send('<h2>404</h2>')
-  })
+module.exports = app
 
 
-app.listen(port, () => {
-    console.log(`listening on port 3000.....`)
-})
+//mysql
+// const mysql = require('mysql')
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'telesales'
+//   })
+
+// app.get('/', (req, res) => {
+//     // res.send('hello world')
+//     res.sendFile('./index.html', {root: __dirname})
+// })
+
+// app.get('/about', (req, res) => {
+//     res.sendFile('./about.html', {root: __dirname})
+// })
+
+// app.get('/contact', (req, res) => {
+//     res.sendFile('./contact.html', {root: __dirname})
+// })
+
+// app.get('/product/:id', (req, res) => {
+//     res.send(`Product ID: ${req.params.id} <br> Category: ${req.query.category}`)
+//     // res.sendFile('./contact.html', {root: __dirname})
+// })
+
+// app.get('/database', (req, res) => {
+//     connection.connect()
+    
+//     connection.query('SELECT * FROM ussers', (err, rows, fields) => {
+//     if (err) {
+//         return res.status(500).json({ message: 'Ada kesalahan', error: err });
+//     }
+    
+//     res.status(200).json({success: true, data: rows})
+//     })
+
+//     connection.end()
+// })
+
+// // error handler
+// app.use('/', (req, res) => {
+//     res.status(404)
+//     res.send('<h2>404</h2>')
+//   })
 
 
+// app.listen(port, () => {
+//     console.log(`listening on port 3000.....`)
+// })
+
+// ==============================================================================
 
 // const http = require('http')
 // const fs = require('fs')
