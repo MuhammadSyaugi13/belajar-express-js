@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+<<<<<<< HEAD
 const mahasiswaRoutes = require('./routes/mahasiswa')
 
 // app.use((req,res,next) => {
@@ -11,6 +12,29 @@ const mahasiswaRoutes = require('./routes/mahasiswa')
 // })
 
 app.use('/mahasiswa', mahasiswaRoutes)
+=======
+//gunakan ejs
+app.set('view engine', 'ejs')
+
+app.get('/', (req, res) => {
+    // res.sendFile('./index.html', {root: __dirname})
+    const mahasiswa  = [
+        {nama: "andi", npm:'2020435027345'},
+        {nama: "ira", npm:'20204350272342'},
+    ]
+    res.render('index', {nama: "Muhammad Syaugi", mahasiswa})
+})
+
+app.get('/about', (req, res) => {
+    // res.sendFile('./about.html', {root: __dirname})
+    res.render('about')
+})
+
+app.get('/contact', (req, res) => {
+    // res.sendFile('./contact.html', {root: __dirname})
+    res.render('contact')
+})
+>>>>>>> viewengine
 
 module.exports = app
 
@@ -62,6 +86,7 @@ module.exports = app
 //     res.send('<h2>404</h2>')
 //   })
 
+<<<<<<< HEAD
 
 // app.listen(port, () => {
 //     console.log(`listening on port 3000.....`)
@@ -109,3 +134,5 @@ module.exports = app
 // }).listen(port, () => {
 //     console.log(`server is  listening on port ${port}....`)
 // })
+=======
+>>>>>>> viewengine
